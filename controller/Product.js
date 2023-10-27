@@ -64,3 +64,28 @@ exports.getProducts = async (req, res) => {
         res.status(400).json(error.message);
     }
 }
+
+
+exports.getProductById = async (req, res) => {
+    try {
+        // Retrieve the product by id
+        const product = await Product.findById(req.params.id).exec();
+
+        // Respond with a 200 status code and the retrieved product
+        res.status(200).json(product);
+    } catch (error) {
+        // If an error occurs, log it and respond with a 400 status code and the error message
+        console.log(error);
+        res.status(400).json(error.message);
+    }
+}
+
+exports.updateProduct = async (req, res) => {
+    try{
+        const product=await Product.findByIdAndUpdate(req.params.id,req.body,{new:true}).exec();
+        res.status(200).json(product);
+    }catch (error) {
+        console.log(error);
+        res.status(400).json(error.message);
+    }
+}
