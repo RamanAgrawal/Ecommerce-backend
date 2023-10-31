@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { addCommonSchemaOptions } = require('../utils');
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
@@ -15,16 +16,8 @@ const ProductSchema = new Schema({
     deleted: { type: Boolean, required: true, default: false },
 });
 
-// Create a virtual field 'id' that returns the '_id' as 'id'
-const virtual = ProductSchema.virtual('id');
-virtual.get(() => this._id);
 
-// Set the toJSON options for the schemaz
-ProductSchema.set('toJSON', {
-    virtuals: true, // Include virtual fields in the JSON representation
-    versionKey: false, // Exclude the '__v' field
-    transform: (doc, ret) => { delete ret._id } // Remove the '_id' field
-});
+addCommonSchemaOptions(ProductSchema);
 
 // Export the Mongoose model for 'Product' using the defined schema
 exports.Product = mongoose.model('Product', ProductSchema);

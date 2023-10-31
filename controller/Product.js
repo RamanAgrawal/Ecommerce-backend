@@ -22,7 +22,7 @@ exports.createProduct = async (req, res) => {
 // Controller function for retrieving products
 exports.getProducts = async (req, res) => {
     // Initialize query and totalProductQuery to retrieve products
-    let query = Product.find();
+    let query = Product.find({deleted:{$ne:true}});
     let totalProductQuery = Product.find();
 
     // Apply filters if specified in the query parameters
