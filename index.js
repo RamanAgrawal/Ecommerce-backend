@@ -117,7 +117,7 @@ server.get('/', (req, res) => {
 })
 
 
-connectMongoDb('mongodb://127.0.0.1:27017/express-mongo').catch(err => console.log(err));
+connectMongoDb('mongodb+srv://iramanagrawal:5R8PzP9Ci33JLYR3@cluster0.rrsq0ek.mongodb.net/').catch(err => console.log(err));
 
 server.listen(3000, () => {
     console.log('Server is running...');
