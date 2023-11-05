@@ -21,8 +21,14 @@ exports.createProduct = async (req, res) => {
 
 // Controller function for retrieving products
 exports.getProducts = async (req, res) => {
+    let condition = {};
+    if (!req.query.admin) {
+        condition = { deleted: { $ne: true } };
+    }
+
+
     // Initialize query and totalProductQuery to retrieve products
-    let query = Product.find({deleted:{$ne:true}});
+    let query = Product.find(condition);
     let totalProductQuery = Product.find();
 
     // Apply filters if specified in the query parameters
@@ -81,10 +87,10 @@ exports.getProductById = async (req, res) => {
 }
 
 exports.updateProduct = async (req, res) => {
-    try{
-        const product=await Product.findByIdAndUpdate(req.params.id,req.body,{new:true}).exec();
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true }).exec();
         res.status(200).json(product);
-    }catch (error) {
+    } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
     }

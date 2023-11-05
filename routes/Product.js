@@ -4,7 +4,7 @@ const { createProduct, getProducts, getProductById, updateProduct } = require('.
 const router = express.Router();
 
 router.post('/', createProduct)
-    .get('/', getProducts)
+    .get('/',getProducts)
     .get('/:id', getProductById)
     .patch('/:id',updateProduct)
 

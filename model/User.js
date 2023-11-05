@@ -21,9 +21,10 @@ const UserSchema = new Schema({
         required: true,
         unique: true, // Ensure email is unique
     },
-    password: {type:String,required:true},
+    password: {type:Buffer,required:true},
     addresses: {type:[AddressSchema]}, // Embed addresses as an array of objects
     role: {type:String,required:true,default:'user'},
+    salt:Buffer
 });
 
 addCommonSchemaOptions(UserSchema);

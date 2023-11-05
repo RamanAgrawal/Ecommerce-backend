@@ -1,19 +1,19 @@
-const { request } = require('express');
-const {Order} =require('../model/Order');
+
+const { Order } = require('../model/Order');
 
 
-exports.getOrdersByUser=async(req,res)=>{
-    const {id}=req.params;
-    try{
-        const orders=await Order.find({user:id}).populate('user').populate('items.product');
-        console.log(orders);
+exports.getOrdersByUser = async (req, res) => {
+    const { id } = req.user;
+    try {
+        const orders = await Order.find({ user: id }).populate('user').populate('items.product');
+
         res.status(200).json(orders);
-    }catch(error){
-        res.status(400).json({message:error.message});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 }
 
-exports.getAllOrders=async(req,res)=>{
+exports.getAllOrders = async (req, res) => {
     let query = Order.find();
     let totalOrderQuery = Order.find();
 
@@ -49,23 +49,24 @@ exports.getAllOrders=async(req,res)=>{
     }
 }
 
-exports.createOrder=async(req,res)=>{ //create order
-    try{
-        const order=new Order(req.body);
-        const doc=await order.save();
-        console.log(order);
+exports.createOrder = async (req, res) => { //create order
+    try {
+        const order = new Order(req.body);
+        const doc = await order.save();
         res.status(201).json(doc);
-    }catch(error){
-        res.status(400).json({message:error.message});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 }
-exports.updateOrder=async(req,res)=>{
-    const {id}=req.params;
-    console.log(req.body,req.params);
+exports.updateOrder = async (req, res) => {
+    const { id } = req.params;
     try {
-        const order=await Order.findByIdAndUpdate(id,req.body,{new:true}).populate('items.product').populate('user');
+        const order = await Order.findByIdAndUpdate(
+            id, req.body, { new: true }).
+            populate('items.product').
+            populate('user');
         res.status(200).json(order);
     } catch (error) {
-        res.status(400).json({message:error.message});
+        res.status(400).json({ message: error.message });
     }
 }

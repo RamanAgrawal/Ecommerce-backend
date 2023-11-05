@@ -1,10 +1,10 @@
 
-
+const passport = require('passport');
 /**
  * Adds a virtual field 'id' that returns the '_id' as 'id' and sets toJSON options.
  * @param {Schema} schema - The Mongoose schema to modify.
  */
-function addCommonSchemaOptions(schema) {
+exports.addCommonSchemaOptions = (schema) => {
     // Create a virtual field 'id' that returns the '_id' as 'id'
     const virtual = schema.virtual('id');
     virtual.get(function () {
@@ -21,4 +21,21 @@ function addCommonSchemaOptions(schema) {
     });
 }
 
-module.exports = { addCommonSchemaOptions };
+
+exports.isAuth = () => {
+    console.log('ds');
+    return passport.authenticate('jwt')
+}
+
+
+exports.sanitizeUser = (user) => {
+    return { id: user.id, role: user.role }
+}
+
+exports.cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies) {
+        token = req.cookies['jwt'];
+    }
+    return token;
+}

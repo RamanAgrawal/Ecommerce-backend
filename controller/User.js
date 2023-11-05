@@ -3,10 +3,10 @@ const { User } = require('../model/User');
 
 // Get a user by their ID
 exports.getUserbyId = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.user;
     try {
         // Find a user by their ID, selecting only 'name', 'email', and 'id' fields
-        const user = await User.findById(id, "name email id addresses").exec();
+        const user = await User.findById(id, "name email id addresses role").exec();
         
         // Respond with a 200 status code (OK) and the user data
         res.status(200).json(user);
@@ -20,7 +20,7 @@ exports.getUserbyId = async (req, res) => {
 }
 
 exports.updateUser=async(req,res)=>{
-    const {id}=req.params;
+    const {id}=req.user;
     try{
         const user=await User.findByIdAndUpdate(id,req.body,{new:true}).exec();
         res.status(200).json(user);
