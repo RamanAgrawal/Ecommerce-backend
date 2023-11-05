@@ -54,9 +54,9 @@ server.use('/api/auth', authRouter.router);
 server.use('/api/cart', isAuth(), cartRouter.router)
 server.use('/api/order', orderRouter.router)
 server.use('/health',healthRouter.router)
-server.get('*', (req, res) => {
-    res.redirect('http://localhost:5173');
-});
+// server.get('*', (req, res) => {
+//     res.redirect('http://localhost:5173');
+// });
 
 passport.use(new LocalStrategy({ usernameField: 'email' },
     async function (email, password, done) {
