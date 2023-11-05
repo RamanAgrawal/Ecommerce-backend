@@ -42,7 +42,7 @@ server.use(passport.authenticate('session'));
 server.use(cors({
     exposedHeaders: ['X-Total-Count'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE' ], 
-    origin: 'https://my-commerce-git-tem-backend-connect-ramanagrawal.vercel.app/', // Replace with the actual domain of your frontend
+    origin: 'https://my-commerce-4ocbqwj3r-ramanagrawal.vercel.app', // Replace with the actual domain of your frontend
     credentials: true,
 }))
 server.use(express.json());
