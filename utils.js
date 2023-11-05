@@ -23,7 +23,6 @@ exports.addCommonSchemaOptions = (schema) => {
 
 
 exports.isAuth = () => {
-    console.log('ds');
     return passport.authenticate('jwt')
 }
 
