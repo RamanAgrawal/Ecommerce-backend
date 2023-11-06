@@ -20,12 +20,21 @@ const { connectMongoDb } = require('./connection');
 const { isAuth } = require('./utils');
 
 const server = express();
+
+server.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE"); // Specify the allowed HTTP methods
+    next();
+  });
+
 const corsOptions = {
     exposedHeaders: ['X-Total-Count'],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     origin: process.env.CORS_ORIGIN, // Replace with the actual domain of your frontend
     credentials: true,
 }
+server.use(cors(corsOptions))
 const sessionOptions = {
     secret: 'keyboard cat',
     resave: false, // don't save session if unmodified
@@ -38,7 +47,6 @@ server.use(session(sessionOptions));
 server.use(passport.initialize());
 server.use(passport.session());
 server.use(passport.authenticate('session'));
-server.use(cors(corsOptions))
 
 server.use('/api/products', productRouter.router);
 server.use('/api/categories', categoriesRouter.router);
