@@ -18,7 +18,7 @@ exports.createUser = async (req, res) => {
                     res.status(400).json(err);
                 } else {
                     const token = jwt.sign(sanitizeUser(user), SECRET_KEY);
-                    res.cookie('jwt', token, { expires: new Date(Date.now() + 3600000), httpOnly: true, sameSite: 'None',secure:true })
+                    res.cookie('jwt', token, { expires: new Date(Date.now() + 3600000), httpOnly: true, sameSite: 'None', secure: true })
                     // Respond with a 201 status code (Created) and the saved user
                     res.status(201).json({ id: response.id, role: response.role });
                     // res.status(201).json(token);
@@ -37,11 +37,25 @@ exports.createUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
 
-    res.cookie('jwt', req.user.token, { expires: new Date(Date.now() + 3600000), httpOnly: true ,sameSite:'none',secure:true})
+    res.cookie('jwt', req.user.token, { expires: new Date(Date.now() + 3600000), httpOnly: true, sameSite: 'none', secure: true })
     res.json(req.user.token)
 }
 
 exports.checkUser = async (req, res) => {
-
+    console.log(req.user);
     res.json(req.user)
+}
+
+exports.logOut = async (req, res) => {
+    console.log("logout");
+    req.logout((err) => {
+        if (err) {
+            console.error(err);
+        }
+    });
+    res.cookie('jwt', null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+    })
+        .sendStatus(200)
 }
