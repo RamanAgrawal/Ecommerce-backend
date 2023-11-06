@@ -30,7 +30,6 @@ server.use(function(req, res, next) {
 
 const corsOptions = {
     exposedHeaders: ['X-Total-Count'],
-    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     origin: process.env.CORS_ORIGIN, // Replace with the actual domain of your frontend
     credentials: true,
 }
