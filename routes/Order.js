@@ -3,7 +3,7 @@ const { getOrdersByUser, createOrder, updateOrder, getAllOrders } = require('../
 const router = express.Router();
 
 router.get('/', getAllOrders)
-    .get('/own', getOrdersByUser)
+    .get('/', getOrdersByUser)
     .post('/', createOrder)
     .patch('/:id', updateOrder)
 

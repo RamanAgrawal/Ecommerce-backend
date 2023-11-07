@@ -30,6 +30,7 @@ server.use(function(req, res, next) {
 
 const corsOptions = {
     exposedHeaders: ['X-Total-Count'],
+    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     origin: process.env.CORS_ORIGIN, // Replace with the actual domain of your frontend
     credentials: true,
 }
@@ -53,7 +54,7 @@ server.use('/api/brands', brandsRouter.router);
 server.use('/api/users', isAuth(), userRouter.router);
 server.use('/api/auth', authRouter.router);
 server.use('/api/cart', isAuth(), cartRouter.router)
-server.use('/api/order', orderRouter.router)
+server.use('/api/order',isAuth(), orderRouter.router)
 server.use('/health', healthRouter.router)
 
 initializrPassport(passport)

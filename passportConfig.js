@@ -10,7 +10,7 @@ exports.initializrPassport = (passport) => {
     let opts = {}
     opts.jwtFromRequest = cookieExtractor
     opts.secretOrKey = SECRET_KEY;
-
+    
 
     passport.use(new LocalStrategy({ usernameField: 'email' },
         async function (email, password, done) {
@@ -19,7 +19,7 @@ exports.initializrPassport = (passport) => {
                 const user = await User.findOne({ email: email }).exec();
                 if (!user) {
                     console.log('User not found');
-                    return done("not found", false, { message: 'Invalid username or password' });
+                    return done(null, false, { message: 'Invalid username or password' });
                 };
                 crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', async function (err, hashedPassword) {
                     if (!crypto.timingSafeEqual(user.password, hashedPassword)) {
@@ -29,7 +29,7 @@ exports.initializrPassport = (passport) => {
                     done(null, { token });
                 });
             } catch (err) {
-                console.log(err);
+
                 done(err);
             }
         }));
@@ -45,7 +45,6 @@ exports.initializrPassport = (passport) => {
             }
         } catch (error) {
             if (error) {
-                console.log(error,"dfsdfsad");
                 return done(error, false);
             }
         }
