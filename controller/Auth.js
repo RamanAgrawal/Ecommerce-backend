@@ -50,6 +50,15 @@ exports.loginUser = async (req, res) => {
 }
 
 exports.checkUser = async (req, res) => {
-
     res.json(req.user)
+}
+
+exports.logoutUser = (req, res) => {
+    res.cookie('jwt', null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+        sameSite: 'None',
+        secure: true, // set to true if your using https
+        domain: process.env.CORS_ORIGIN
+    }).sendStatus(200)
 }
