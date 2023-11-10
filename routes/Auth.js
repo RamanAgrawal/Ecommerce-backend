@@ -9,19 +9,13 @@ router.post('/signup', createUser)
     .get('/check', passport.authenticate('jwt'), checkUser)
     .get('/logout', (req, res) => {
         console.log("logout");
-        req.logout((err) => {
-            if (err) {
-                console.error(err);
-            }
-        });
-        res
-            .cookie('jwt', null, {
-                expires: new Date(Date.now()),
-                httpOnly: true,
-                sameSite: 'None',
-                secure: true // set to true if your using https
-            })
-            .sendStatus(200)
+        res.cookie('jwt', null, {
+            expires: new Date(Date.now()),
+            httpOnly: true,
+            sameSite: 'None',
+            secure: true, // set to true if your using https
+            domain:process.env.CORS_ORIGIN
+        }).sendStatus(200)
     });
 
 
