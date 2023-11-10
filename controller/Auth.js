@@ -59,6 +59,5 @@ exports.logoutUser = (req, res) => {
         httpOnly: true,
         sameSite: 'none',
         secure: true, // set to true if your using https
-        domain: process.env.CORS_ORIGIN
     }).sendStatus(200)
 }
