@@ -19,6 +19,7 @@ router.post('/signup', createUser)
                 expires: new Date(Date.now()),
                 httpOnly: true,
                 sameSite: 'None',
+                secure: true // set to true if your using https
             })
             .sendStatus(200)
     });
