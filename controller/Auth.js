@@ -57,7 +57,7 @@ exports.logoutUser = (req, res) => {
     res.cookie('jwt', null, {
         expires: new Date(Date.now()),
         httpOnly: true,
-        sameSite: 'None',
+        sameSite: 'none',
         secure: true, // set to true if your using https
         domain: process.env.CORS_ORIGIN
     }).sendStatus(200)
