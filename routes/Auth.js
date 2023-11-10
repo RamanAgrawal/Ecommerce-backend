@@ -18,6 +18,7 @@ router.post('/signup', createUser)
             .cookie('jwt', null, {
                 expires: new Date(Date.now()),
                 httpOnly: true,
+                sameSite: 'None',
             })
             .sendStatus(200)
     });
