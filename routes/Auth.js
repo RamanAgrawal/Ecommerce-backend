@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/signup', createUser)
     .post('/login', passport.authenticate('local'), loginUser)
     .get('/check', passport.authenticate('jwt'), checkUser)
-    .get('/logout', logoutUser);
+    .post('/logout', logoutUser);
 
 
 exports.router = router;
