@@ -53,11 +53,20 @@ exports.checkUser = async (req, res) => {
     res.json(req.user)
 }
 
-exports.logoutUser = (req, res) => {
-    res.cookie('jwt', '', {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true, // set to true if your using https
-    }).sendStatus(200)
+// exports.logoutUser = (req, res) => {
+//     res.cookie('jwt', '', {
+//         expires: new Date(Date.now()),
+//         httpOnly: true,
+//         sameSite: 'none',
+//         secure: true, // set to true if your using https
+//     }).sendStatus(200)
+// }
+
+exports.logoutUser=(req,res)=>{
+    res.status(200).clearCookie('jwt', {
+        path: '/'
+      });
+      req.session.destroy(function (err) {
+        res.redirect('/');
+      });
 }
