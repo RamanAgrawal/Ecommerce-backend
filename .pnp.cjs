@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["express-session", "npm:1.17.3"],\
             ["jsonwebtoken", "npm:9.0.2"],\
             ["mongoose", "npm:7.6.3"],\
+            ["nodemailer", "npm:6.9.7"],\
             ["passport", "npm:0.6.0"],\
             ["passport-jwt", "npm:4.0.1"],\
             ["passport-local", "npm:1.0.0"],\
@@ -401,6 +402,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["express-session", "npm:1.17.3"],\
             ["jsonwebtoken", "npm:9.0.2"],\
             ["mongoose", "npm:7.6.3"],\
+            ["nodemailer", "npm:6.9.7"],\
             ["passport", "npm:0.6.0"],\
             ["passport-jwt", "npm:4.0.1"],\
             ["passport-local", "npm:1.0.0"],\
@@ -980,6 +982,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/negotiator-npm-0.6.3-9d50e36171-b8ffeb1e26.zip/node_modules/negotiator/",\
           "packageDependencies": [\
             ["negotiator", "npm:0.6.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["nodemailer", [\
+        ["npm:6.9.7", {\
+          "packageLocation": "./.yarn/cache/nodemailer-npm-6.9.7-9d10c8b452-0cf66d27ae.zip/node_modules/nodemailer/",\
+          "packageDependencies": [\
+            ["nodemailer", "npm:6.9.7"]\
           ],\
           "linkType": "HARD"\
         }]\

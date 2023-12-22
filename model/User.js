@@ -24,7 +24,8 @@ const UserSchema = new Schema({
     password: {type:Buffer,required:true},
     addresses: {type:[AddressSchema]}, // Embed addresses as an array of objects
     role: {type:String,required:true,default:'user'},
-    salt:Buffer
+    salt:Buffer,
+    resetPasswordToken:{type:String,default:''},
 });
 
 addCommonSchemaOptions(UserSchema);
