@@ -13,7 +13,7 @@ const userRouter = require('./routes/User');
 const authRouter = require('./routes/Auth');
 const cartRouter = require('./routes/Cart');
 const orderRouter = require('./routes/Order');
-const healthRouter = require('./routes/Health');
+// const paymentRouter = require('./routes/Payment');
 
 const { initializrPassport } = require('./passportConfig');
 const { connectMongoDb } = require('./connection');
@@ -55,7 +55,7 @@ server.use('/api/users', isAuth(), userRouter.router);
 server.use('/api/auth', authRouter.router);
 server.use('/api/cart', isAuth(), cartRouter.router)
 server.use('/api/order',isAuth(), orderRouter.router)
-server.use('/health', healthRouter.router)
+// server.use('/api/create-payment-intent', paymentRouter.router)
 
 initializrPassport(passport)
 connectMongoDb()

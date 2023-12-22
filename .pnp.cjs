@@ -38,7 +38,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mongoose", "npm:7.6.3"],\
             ["passport", "npm:0.6.0"],\
             ["passport-jwt", "npm:4.0.1"],\
-            ["passport-local", "npm:1.0.0"]\
+            ["passport-local", "npm:1.0.0"],\
+            ["stripe", "npm:14.5.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -59,6 +60,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/node", "npm:20.8.8"],\
             ["undici-types", "npm:5.25.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:20.9.4", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.9.4-a4808c97df-619144cfee.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:20.9.4"],\
+            ["undici-types", "npm:5.26.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -394,7 +403,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mongoose", "npm:7.6.3"],\
             ["passport", "npm:0.6.0"],\
             ["passport-jwt", "npm:4.0.1"],\
-            ["passport-local", "npm:1.0.0"]\
+            ["passport-local", "npm:1.0.0"],\
+            ["stripe", "npm:14.5.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1108,6 +1118,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["side-channel", "npm:1.0.4"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:6.11.2", {\
+          "packageLocation": "./.yarn/cache/qs-npm-6.11.2-b118bc1c6f-e812f3c590.zip/node_modules/qs/",\
+          "packageDependencies": [\
+            ["qs", "npm:6.11.2"],\
+            ["side-channel", "npm:1.0.4"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["random-bytes", [\
@@ -1286,6 +1304,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["stripe", [\
+        ["npm:14.5.0", {\
+          "packageLocation": "./.yarn/cache/stripe-npm-14.5.0-caf3fc8636-ad2f0205d1.zip/node_modules/stripe/",\
+          "packageDependencies": [\
+            ["stripe", "npm:14.5.0"],\
+            ["@types/node", "npm:20.9.4"],\
+            ["qs", "npm:6.11.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["toidentifier", [\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/toidentifier-npm-1.0.1-f759712599-952c29e2a8.zip/node_modules/toidentifier/",\
@@ -1331,6 +1360,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/undici-types-npm-5.25.3-2ac9eafc9e-ec9d2cc365.zip/node_modules/undici-types/",\
           "packageDependencies": [\
             ["undici-types", "npm:5.25.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:5.26.5", {\
+          "packageLocation": "./.yarn/cache/undici-types-npm-5.26.5-de4f7c7bb9-3192ef6f3f.zip/node_modules/undici-types/",\
+          "packageDependencies": [\
+            ["undici-types", "npm:5.26.5"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -71,10 +71,3 @@ exports.logoutUser = (req, res) => {
     }).sendStatus(200)
 }
 
-// exports.logoutUser=(req,res)=>{
-//     // req.logOut();
-//     res.status(200).clearCookie('connect.sid', {
-//       path: '/',
-//       httpOnly: true,
-//     });
-// }
