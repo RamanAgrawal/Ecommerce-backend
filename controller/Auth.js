@@ -1,11 +1,9 @@
 const { User } = require("../model/User");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const { sanitizeUser } = require("../utils");
+const { sanitizeUser, accountCreationtemplate } = require("../utils");
 const { sendMail } = require("../emailSetup/NodeMailer");
 
-const html = `
-<h1>Thanks for Creating Account</h1>`;
 const sessionTime = 1296000000; // 15 days
 exports.createUser = async (req, res) => {
   try {
@@ -35,7 +33,7 @@ exports.createUser = async (req, res) => {
             to: req.body.email,
             subject: "Account Created",
             text: "Wellcome to my commerce",
-            html
+            html:accountCreationtemplate
           });
           req.login(sanitizeUser(response), (err) => {
             if (err) {
