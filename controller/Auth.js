@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const { sanitizeUser } = require("../utils");
 const { sendMail } = require("../emailSetup/NodeMailer");
 
+const html = `
+<h1>Thanks for Creating Account</h1>`;
 const sessionTime = 1296000000; // 15 days
 exports.createUser = async (req, res) => {
   try {
@@ -29,6 +31,12 @@ exports.createUser = async (req, res) => {
 
           // Save the user to the database and return the response
           const response = await newUser.save();
+          sendMail({
+            to: req.body.email,
+            subject: "Account Created",
+            text: "Wellcome to my commerce",
+            html
+          });
           req.login(sanitizeUser(response), (err) => {
             if (err) {
               res.status(400).json(err);
